@@ -28,4 +28,4 @@ func main() {
 }
 ```
 
-### Special thank to @invisal  for converting logic
+Special thank to `@invisal`  for converting logic.
