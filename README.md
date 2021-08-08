@@ -27,3 +27,5 @@ func main() {
   // ដប់ពីរចុចសូន្យប្រាំ
 }
 ```
+
+### Special thank to @invisal  for converting logic
