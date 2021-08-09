@@ -40,4 +40,6 @@ func TestConvertWordToRoman(t *testing.T) {
   TestingNum2Word("1234.78", "មួយពាន់ពីររយសាមសិបបួនចុចចិតសិបប្រាំបី", t)
   TestingNum2Word("10005.55", "មួយម៉ឺនប្រាំចុចហាសិបប្រាំ", t)
   TestingNum2Word("12.05", "ដប់ពីរចុចសូន្យប្រាំ", t)
+  TestingNum2Word("12.0005", "ដប់ពីរចុចសូន្យសូន្យសូន្យប្រាំ", t)
+  TestingNum2Word("12.0000", "ដប់ពីរចុចសូន្យសូន្យសូន្យសូន្យ", t)
 }
