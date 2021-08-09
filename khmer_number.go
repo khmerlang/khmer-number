@@ -72,8 +72,26 @@ func countLeading(str string, item rune) int {
    return counter
  }
 
+func khmer2RomanNum(roman string) string {
+  khNum := ""
+  khNum = strings.ReplaceAll(roman, "០", "0")
+  khNum = strings.ReplaceAll(khNum, "១", "1")
+  khNum = strings.ReplaceAll(khNum, "២", "2")
+  khNum = strings.ReplaceAll(khNum, "៣", "3")
+  khNum = strings.ReplaceAll(khNum, "៤", "4")
+  khNum = strings.ReplaceAll(khNum, "៥", "5")
+  khNum = strings.ReplaceAll(khNum, "៦", "6")
+  khNum = strings.ReplaceAll(khNum, "៧", "7")
+  khNum = strings.ReplaceAll(khNum, "៨", "8")
+  khNum = strings.ReplaceAll(khNum, "៩", "9")
+  khNum = strings.ReplaceAll(khNum, ",", "")
+  khNum = strings.ReplaceAll(khNum, ".", ".")
+  return khNum
+}
+
+
 func Num2Word(num string, space string) string {
-  nums := strings.Split(num, ".")
+  nums := strings.Split(khmer2RomanNum(num), ".")
   if len(nums) == 1 {
     digit, _ := strconv.ParseInt(nums[0], 10, 64)
     return int2Word(digit, space)
