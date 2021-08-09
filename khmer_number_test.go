@@ -5,13 +5,20 @@ import (
 )
 
 func TestingNum2Word(num string, word string, t *testing.T) {
-  result := Num2Word(num)
+  result := Num2Word(num, "")
   if result != word {
     t.Errorf("(%s) expect = (%s), got (%s)", num, word, result)
   }
 }
 
-func TestConvertWordToRoman(t *testing.T) {
+func TestingNum2WordWithSpace(num string, word string, t *testing.T) {
+  result := Num2Word(num, " ")
+  if result != word {
+    t.Errorf("(%s) expect = (%s), got (%s)", num, word, result)
+  }
+}
+
+func TestConvertNumToWord(t *testing.T) {
   TestingNum2Word("0", "សូន្យ", t)
   TestingNum2Word("1", "មួយ", t)
   TestingNum2Word("2", "ពីរ", t)
@@ -42,4 +49,37 @@ func TestConvertWordToRoman(t *testing.T) {
   TestingNum2Word("12.05", "ដប់ពីរចុចសូន្យប្រាំ", t)
   TestingNum2Word("12.0005", "ដប់ពីរចុចសូន្យសូន្យសូន្យប្រាំ", t)
   TestingNum2Word("12.0000", "ដប់ពីរចុចសូន្យសូន្យសូន្យសូន្យ", t)
+}
+
+func TestConvertNumToWordWithSpace(t *testing.T) {
+  TestingNum2WordWithSpace("0", "សូន្យ", t)
+  TestingNum2WordWithSpace("1", "មួយ", t)
+  TestingNum2WordWithSpace("2", "ពីរ", t)
+  TestingNum2WordWithSpace("3", "បី", t)
+  TestingNum2WordWithSpace("4", "បួន", t)
+  TestingNum2WordWithSpace("5", "ប្រាំ", t)
+  TestingNum2WordWithSpace("6", "ប្រាំមួយ", t)
+  TestingNum2WordWithSpace("7", "ប្រាំពីរ", t)
+  TestingNum2WordWithSpace("8", "ប្រាំបី", t)
+  TestingNum2WordWithSpace("9", "ប្រាំបួន", t)
+  TestingNum2WordWithSpace("10", "ដប់ ", t)
+  TestingNum2WordWithSpace("20", "ម្ភៃ ", t)
+  TestingNum2WordWithSpace("30", "សាមសិប ", t)
+  TestingNum2WordWithSpace("40", "សែសិប ", t)
+  TestingNum2WordWithSpace("50", "ហាសិប ", t)
+  TestingNum2WordWithSpace("60", "ហុកសិប ", t)
+  TestingNum2WordWithSpace("70", "ចិតសិប ", t)
+  TestingNum2WordWithSpace("80", "ប៉ែតសិប ", t)
+  TestingNum2WordWithSpace("90", "កៅសិប ", t)
+  TestingNum2WordWithSpace("100", "មួយរយ ", t)
+  TestingNum2WordWithSpace("1000", "មួយពាន់ ", t)
+  TestingNum2WordWithSpace("10000", "មួយម៉ឺន ", t)
+  TestingNum2WordWithSpace("100000", "មួយសែន ", t)
+  TestingNum2WordWithSpace("1000000", "មួយលាន ", t)
+  TestingNum2WordWithSpace("1234", "មួយពាន់ ពីររយ សាមសិប បួន", t)
+  TestingNum2WordWithSpace("1234.78", "មួយពាន់ ពីររយ សាមសិប បួន ចុច ចិតសិប ប្រាំបី", t)
+  TestingNum2WordWithSpace("10005.55", "មួយម៉ឺន ប្រាំ ចុច ហាសិប ប្រាំ", t)
+  TestingNum2WordWithSpace("12.05", "ដប់ ពីរ ចុច សូន្យ ប្រាំ", t)
+  TestingNum2WordWithSpace("12.0005", "ដប់ ពីរ ចុច សូន្យ សូន្យ សូន្យ ប្រាំ", t)
+  TestingNum2WordWithSpace("12.0000", "ដប់ ពីរ ចុច សូន្យ សូន្យ សូន្យ សូន្យ ", t)
 }
