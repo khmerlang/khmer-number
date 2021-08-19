@@ -33,6 +33,19 @@ func main() {
   // មួយម៉ឺនប្រាំចុចហាសិបប្រាំ
   fmt.Println(kn.Num2Word("១២.០៥", " "))
   // ដប់ ពីរ ចុច សូន្យ ប្រាំ
+
+  num, _ := kn.Word2NumEN("ពីរ")
+  fmt.Println(num)
+  // 2
+  num, _ := kn.Word2NumEN("ពីរ")
+  fmt.Println(num)
+  // ២
+  num, _ := kn.Word2NumEN("មួយម៉ឺនប្រាំចុចហាសិបប្រាំ")
+  fmt.Println(num)
+  // "10005.55"
+  num, _ := kn.Word2NumKH("មួយម៉ឺនប្រាំចុចហាសិបប្រាំ")
+  fmt.Println(num)
+  // "១០០០៥.៥៥"
 }
 ```
 

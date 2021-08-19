@@ -6,32 +6,6 @@ import (
   "strings"
 )
 
-var KHMER_DIGIT_WORD = []string {
-  "",
-  "មួយ",
-  "ពីរ",
-  "បី",
-  "បួន",
-  "ប្រាំ",
-  "ប្រាំមួយ",
-  "ប្រាំពីរ",
-  "ប្រាំបី",
-  "ប្រាំបួន",
-}
-
-var KHMER_TENTH = []string{
-  "",
-  "ដប់",
-  "ម្ភៃ",
-  "សាមសិប",
-  "សែសិប",
-  "ហាសិប",
-  "ហុកសិប",
-  "ចិតសិប",
-  "ប៉ែតសិប",
-  "កៅសិប",
-}
-
 func int2Word(num int64, space string) string {
   if num == 0 {
     return "សូន្យ"
@@ -68,30 +42,12 @@ func countLeading(str string, item rune) int {
     } else {
       break
     }
-   }
-   return counter
- }
-
-func khmer2RomanNum(roman string) string {
-  khNum := ""
-  khNum = strings.ReplaceAll(roman, "០", "0")
-  khNum = strings.ReplaceAll(khNum, "១", "1")
-  khNum = strings.ReplaceAll(khNum, "២", "2")
-  khNum = strings.ReplaceAll(khNum, "៣", "3")
-  khNum = strings.ReplaceAll(khNum, "៤", "4")
-  khNum = strings.ReplaceAll(khNum, "៥", "5")
-  khNum = strings.ReplaceAll(khNum, "៦", "6")
-  khNum = strings.ReplaceAll(khNum, "៧", "7")
-  khNum = strings.ReplaceAll(khNum, "៨", "8")
-  khNum = strings.ReplaceAll(khNum, "៩", "9")
-  khNum = strings.ReplaceAll(khNum, ",", "")
-  khNum = strings.ReplaceAll(khNum, ".", ".")
-  return khNum
+  }
+  return counter
 }
 
-
 func Num2Word(num string, space string) string {
-  nums := strings.Split(khmer2RomanNum(num), ".")
+  nums := strings.Split(Khmer2RomanNum(num), ".")
   if len(nums) == 1 {
     digit, _ := strconv.ParseInt(nums[0], 10, 64)
     return int2Word(digit, space)
@@ -107,6 +63,6 @@ func Num2Word(num string, space string) string {
     } else {
       break
     }
-   }
+  }
   return fmt.Sprintf("%s%sចុច%s%s%s", int2Word(digit, space), space, lead_zero, space, int2Khmer(precision, space))
 }
