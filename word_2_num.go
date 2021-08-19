@@ -33,34 +33,62 @@ func text2Token(text string) ([]string, error) {
 	return tokens, nil
 }
 
+func collect(s []int, t int) ([]int, int) {
+	tmp := s
+  k := 0
+  for {
+  	if len(tmp) <= 0 {
+  		break
+  	}
+
+    if tmp[len(tmp) - 1] >= t {
+    	return tmp, k
+    }
+
+    k += tmp[len(tmp) - 1]
+    tmp = tmp[:len(tmp) - 1]
+  }
+
+
+  return tmp, k
+}
+
 func text2Int(tokens []string) string {
-	num := 0
-  num_word := 0
+	// numArr := []int{}
+	numArr := make([]int, 0)
+	// num := 0
+  // num_word := 0
 	for _, token := range tokens {
     if n, isFound := KHMER_DIGIT_WORD_MAP[token]; isFound {
-      num = n
+    	numArr = append(numArr, n)
     } else if n, isFound := KHMER_TENTH_MAP[token]; isFound {
-      num = n
-      num_word += num
+      numArr = append(numArr, n)
     } else if token == "លាន" {
-      num *= 1000000
-      num_word += num
+    	n := 0
+    	numArr, n = collect(numArr, 1000000)
+      numArr = append(numArr, n * 1000000)
     } else if token == "សែន" {
-      num *= 100000
-      num_word += num
+    	n := 0
+    	numArr, n = collect(numArr, 100000)
+    	numArr = append(numArr, n * 100000)
     } else if token == "ម៉ឺន" {
-      num *= 10000
-      num_word += num
+    	n := 0
+    	numArr, n = collect(numArr, 10000)
+    	numArr = append(numArr, n * 10000)
     } else if token == "ពាន់" {
-      num *= 1000
-      num_word += num
+    	n := 0
+    	numArr, n = collect(numArr, 1000)
+    	numArr = append(numArr, n * 1000)
     } else if token == "រយ" {
-      num *= 100
-      num_word += num
+    	n := 0
+    	numArr, n = collect(numArr, 100)
+    	numArr = append(numArr, n * 100)
     }
 	}
 
-	if num < 10 {
+	num_word := 0
+	for _, num := range numArr {
+
 		num_word += num
 	}
 

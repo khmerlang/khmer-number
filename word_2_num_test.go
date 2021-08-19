@@ -49,6 +49,7 @@ func TestConvertWordToNum(t *testing.T) {
   TestingWord2Num("ដប់ពីរចុចសូន្យប្រាំ", "12.05", t)
   TestingWord2Num("ដប់ពីរចុចសូន្យសូន្យសូន្យប្រាំ", "12.0005", t)
   TestingWord2Num("ដប់ពីរចុចសូន្យសូន្យសូន្យសូន្យ", "12.0000", t)
+  TestingWord2Num("មួយរយដប់ប្រាំមួយលានប្រាំបីរយដប់ពាន់ពីររយពីរ", "116810202", t)
 }
 
 func TestConvertWordToKhmerNum(t *testing.T) {
